@@ -46,14 +46,17 @@ dossier = dossier_racine + '/' + 'v2_' + '2024-06-13'
 class Support_Activite:
 
   numero_code = {}
+  site = {}
 
   def __init__(self):
     self.code = 0
     self.numero = ""
+    self.code_site = 0
 
   def remplir(self, donnee):
     self.code = int(donnee[0])
-    self.numero = donnee[1] 
+    self.numero = donnee[1]
+    self.code_site = donnee[9]
     return
 
   def lire_fichier():
@@ -69,6 +72,7 @@ class Support_Activite:
           support = Support_Activite()
           support.remplir(donnee)
           Support_Activite.numero_code[support.numero] = support.code
+          Support_Activite.site[support.code] = support.code_site
           print(ligne)
           print("numero:"  + support.numero + " => " + str(support.code))
     return

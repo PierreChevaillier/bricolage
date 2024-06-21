@@ -20,10 +20,10 @@
 # revision:
 # ------------------------------------------------------------------------------
 # comments:
-# -  seules sont traitees les indisponibilites referencees 
-#    dans la table rsbl_support sont
+# -  seules sont traitees les indisponibilites des bateaux references 
+#    dans la table rsbl_supports
 # warnings:
-# - 
+# - Pas de gestion heure d'hiver / heure d'ete (cf. variable heure_ouverture)
 # todos:
 #  - test it and then test it again
 # ==============================================================================
@@ -77,7 +77,7 @@ dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-06-13'
 #"15","2","4","Basse mer de grandes marées","Grande marée"
 codage_motif = {"compet": 1, "rando": 3, "entretien": 5, "form": 9, "stage": 10, "jpo": 11, "secu": 14, "maree": 15}
 
-heure_ouverture = 8.0
+heure_ouverture = 9.0
 duree_creneau = 1.0
 
 # Table de la version 1
