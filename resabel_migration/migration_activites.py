@@ -18,7 +18,7 @@
 #   - python 3.9.6 on macOS 13.6
 # ------------------------------------------------------------------------------
 # creation: 20-juin-2024 pchevaillier@gmail.com
-# revision:
+# revision: 18-aug-2024 pchevaillier@gmail.com filtre / date_debut_migration
 # ------------------------------------------------------------------------------
 # comments:
 # -  seules sont traitees les sorties des bateaux references 
@@ -54,6 +54,8 @@ dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-06-13'
 heure_ouverture = 9.0
 duree_creneau = 1.0
 
+date_debut_migration = datetime(year=2024,month=6,day=1)
+
 # Table de la version 1
 # "1425078000";"0";"63";"1";"0"
 # "jour";"creneau";"code_bateau";"code_membre";"cdb"
@@ -77,10 +79,13 @@ class Sortie:
     return self.jour == sortie.jour and self.creneau == sortie.creneau and self.code_bateau == sortie.code_bateau
   
   def est_valide(self):
-    condition = self.code_bateau in Support_Activite.numero_code
-    if not condition:
-      jour = datetime.fromtimestamp(self.jour).isoformat()
-      print("support non referencé: " + self.code_bateau + " pour sortie du " + jour)
+    jour = datetime.fromtimestamp(self.jour)
+    condition = jour >= date_debut_migration
+    if condition:
+      condition = condition and self.code_bateau in Support_Activite.numero_code
+      if not condition:
+        jour_texte = jour.isoformat()
+        print("support non referencé: " + self.code_bateau + " pour sortie du " + jour_texte)
     return condition
   
 # Tables de la version 2
@@ -151,6 +156,8 @@ class Participation_Activite:
 
 # =============================================================================
 if __name__ == "__main__":
+
+  print("Migration des sorties apres le " + date_debut_migration.isoformat())
 
   Support_Activite.lire_fichier();
   print(Support_Activite.numero_code)

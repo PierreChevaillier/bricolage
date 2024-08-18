@@ -17,7 +17,7 @@
 #   - python 3.9.6 on macOS 13.6
 # ------------------------------------------------------------------------------
 # creation: 20-juin-2024 pchevaillier@gmail.com
-# revision:
+# revision:  18-aug-2024 pchevaillier@gmail.com filtre / date_debut_migration
 # ------------------------------------------------------------------------------
 # comments:
 # -  seules sont traitees les indisponibilites des bateaux references 
@@ -47,6 +47,8 @@ dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-06-13'
 
 # ==============================================================================
 # --- Structures de donnees
+
+date_debut_migration = datetime(year=2024,month=6,day=1)
 
 # correspondance codage
 #table agenda de v1 (n'existe pas en v2)
@@ -106,9 +108,12 @@ class Evenement_Bateau:
     return
   
   def est_valide(self):
-    condition = self.code_bateau in Support_Activite.numero_code
-    if not condition:
-      print("support non referencé: " + self.code_bateau)
+    jour = datetime.fromtimestamp(self.jour_fin)
+    condition = jour >= date_debut_migration
+    if condition:
+      condition = condition and self.code_bateau in Support_Activite.numero_code
+      if not condition:
+        print("support non referencé: " + self.code_bateau)
     return condition
   
 # Table de la version 2
@@ -201,6 +206,7 @@ if __name__ == "__main__":
           ligne_v2  = indispo.formatter_ligne()
           fichier_v2.write(ligne_v2 + eol)
           #print(ligne_v2)
- 
+    print(f"nombre d'indisponibilités conservées : {code_indispo}")
+
 #  end of file
 # ==============================================================================
