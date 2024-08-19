@@ -45,8 +45,8 @@ delimiteur = '"'
 # ==============================================================================
 # --- Chemins d'acces aux fichiers en relatif / dossier racine
 dossier_racine = './../../bdd_resabel'
-dossier_v1 = dossier_racine + '/' + 'v1_' + '2024-06-13'
-dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-06-13'
+dossier_v1 = dossier_racine + '/' + 'v1_' + '2024-08-26'
+dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-08-26'
 
 # ==============================================================================
 # --- Structures de donnees

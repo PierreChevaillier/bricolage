@@ -39,8 +39,8 @@ delimiteur = '"'
 # ==============================================================================
 # --- Chemins d'acces aux fichiers en relatif / dossier racine
 dossier_racine = './../../bdd_resabel'
-dossier_v1 = dossier_racine + '/' + 'v1_' + '2024-06-06'
-dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-06-06'
+dossier_v1 = dossier_racine + '/' + 'v1_' + '2024-08-26'
+dossier_v2 = dossier_racine + '/' + 'v2_' + '2024-08-26'
 
 # ==============================================================================
 # --- Structures de donnees
@@ -229,10 +229,11 @@ if __name__ == "__main__":
 
         # Filtre conservation des enregistrements de la v1 en v2
         conserve =  True
-        if (membre_v2.code > 9050 and membre_v2.code < 9100):
-          conserve = False
-        if connexion.identifiant == 'xxx.yyyy':
-          conserve = False
+        
+        #if (membre_v2.code > 9050 and membre_v2.code < 9100):
+        #  conserve = False
+        #if connexion.identifiant == 'xxx.yyyy':
+        #  conserve = False
         
         # Ecriture des fichiers de donnees de la v2
         if conserve:
