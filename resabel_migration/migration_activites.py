@@ -4,7 +4,7 @@
 #   migration base de données v1 vers v2
 # description: script de transformation de donnes
 #  - source : fichier inscriptions_sortie.csv, export de la table membres de resabel v1
-#             puis TRIE (jour, creneau) ascendant et cdb descendant
+#             puis TRIE (jour, creneau, support) ascendant et cdb descendant
 #  - fichiers produits : fichiers csv correspondants 
 #    aux tables rsbl_membres et rsbl_connexions de base de donnees v2
 # copyright (c) 2024 Pierre Chevaillier. All rights reserved.
